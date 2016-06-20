@@ -1,2 +1,168 @@
-Initial file
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8" /><meta name="author" content="Cédric Champeau (@CedricChampeau), Gradle Inc." /><title>Juggling multiple Java platforms and Jigsaw with Gradle</title><meta content="yes" name="apple-mobile-web-app-capable" /><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style" /><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" name="viewport" /><link href="reveal.js/css/reveal.css" rel="stylesheet" /><link rel="stylesheet" href="reveal.js/css/theme/summit.css" id="theme" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" /><link href="reveal.js/lib/css/zenburn.css" rel="stylesheet" /><script>document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script><link rel="stylesheet" type="text/css" href="reveal.js/css/theme/asciinema-player.css" />
+<link rel="stylesheet" type="text/css" href="reveal.js/css/theme/github-gist.css" />
+<script src="reveal.js/css/theme/asciinema-player.js"></script></head><body><div class="reveal"><div class="slides"><section data-background="images/summit-intro.png"><div id="front-top">Gradle Summit</div><div id="front-title">Juggling multiple Java platforms and Jigsaw with Gradle - Cédric Champeau</div><div id="front-date">2016</div></section><section id="who-am-i" data-background="images/summit-intro.png"><h2>Who am I</h2><style>
+.asciinema-terminal.font-medium {
+  font-size: 16px;
+}
+</style>
+<div class="listingblock"><div class="content"><pre class="highlight"><code class="groovy language-groovy">speaker {
+    name 'Cédric Champeau'
+    company 'Gradle Inc'
+    oss 'Apache Groovy committer',
+    successes 'Static type checker',
+                    'Static compilation',
+                    'Traits',
+                    'Markup template engine',
+                    'DSLs'
+        failures Stream.of(bugs),
+        twitter '@CedricChampeau',
+        github 'melix',
+        extraDescription '''Groovy in Action 2 co-author
+Misc OSS contribs (Gradle plugins, deck2pdf, jlangdetect, ...)'''
+}</code></pre></div></div></section>
+<section id="project-jigsaw"><h2>Project Jigsaw</h2><div class="ulist"><ul><li><p>Modularity for the Java platform</p><div class="ulist"><ul><li><p><strong>Reliable configuration</strong> (goodbye <em>classpath</em>)</p></li><li><p><strong>Strong encapsulation</strong> (goodbye <em>com.sun</em>)</p></li></ul></div></li><li><p>Enforce strict boundaries between modules</p><div class="ulist"><ul><li><p>compile-time</p></li><li><p>run-time</p></li></ul></div></li></ul></div></section>
+<section><section id="jigsaw-modules"><h2>Jigsaw modules</h2></section><section id="declaring-a-module"><h2>Declaring a module</h2><div class="listingblock"><div class="title">module-info.java</div><div class="content"><pre class="highlight"><code class="java language-java">module com.foo.bar {
+    requires org.baz.qux;
+    exports com.foo.bar.alpha;
+    exports com.foo.bar.beta;
+}</code></pre></div></div></section><section id="a-module"><h2>A module</h2><div class="ulist"><ul><li><p>Declares dependencies onto other modules</p><div class="ulist"><ul><li><p>optionally transitive (<code>public</code>)</p></li></ul></div></li><li><p>Declares a list of packages it exports</p></li><li><p>will be found on <em>modulepath</em></p></li></ul></div></section></section>
+<section id="why-it-s-going-to-break-your-apps"><h2>Why it&#8217;s going to break your apps</h2><div class="ulist"><ul><li><p>Exports are package based</p></li><li><p>A non-exported package is not visible to consumers</p></li><li><p>2 modules cannot export the same packages</p></li><li><p>2 modules cannot have the same internal packages</p></li></ul></div>
+<div class="paragraph"><p>Death to <strong>split packages</strong>.</p></div></section>
+<section id="how-gradle-will-help"><h2>How Gradle will help?</h2><div class="ulist"><ul><li><p>Find a <em>smooth migration path</em></p></li><li><p>Prepare today, migrate when ready</p></li></ul></div></section>
+<section id="gradle-s-software-model"><h2>Gradle&#8217;s software model</h2><div class="ulist"><ul><li><p>Idea : we&#8217;re building software, so let&#8217;s model software</p></li><li><p>Describe <em>what</em> rather than <em>how</em></p></li><li><p>Leverage conventions</p></li><li><p>Work in progress</p></li></ul></div></section>
+<section id="a-simple-project"><h2>A simple project</h2><div class="paragraph"><p>
+<div id="player-container-08dcfd49-6b5e-4e48-87bc-04011afa1dc8"></div>
+  <script>
+    asciinema_player.core.CreatePlayer('player-container-08dcfd49-6b5e-4e48-87bc-04011afa1dc8', 'step1.json', { width: 114, height: 24, fontSize: 'medium' });
+  </script>
+</p></div></section>
+<section id="internal-apis"><h2>Internal APIs</h2><div class="paragraph"><p>
+<div id="player-container-dd0777c4-e44f-4249-8abd-1d2a256f3445"></div>
+  <script>
+    asciinema_player.core.CreatePlayer('player-container-dd0777c4-e44f-4249-8abd-1d2a256f3445', 'step2.json', { width: 114, height: 24, fontSize: 'medium' });
+  </script>
+</p></div></section>
+<section id="internal-apis-maintenance-nightmare"><h2>Internal APIs maintenance nightmare</h2><div class="paragraph"><p>
+<div id="player-container-53180c21-982e-44c4-bc3a-0c1b7a94296a"></div>
+  <script>
+    asciinema_player.core.CreatePlayer('player-container-53180c21-982e-44c4-bc3a-0c1b7a94296a', 'step3.json', { width: 114, height: 24, fontSize: 'medium' });
+  </script>
+</p></div></section>
+<section id="declaring-internal-apis"><h2>Declaring internal APIs</h2><div class="paragraph"><p>
+<div id="player-container-6ac6ff93-575b-4dba-91f9-543e8eaf14d9"></div>
+  <script>
+    asciinema_player.core.CreatePlayer('player-container-6ac6ff93-575b-4dba-91f9-543e8eaf14d9', 'step4.json', { width: 114, height: 24, fontSize: 'medium' });
+  </script>
+</p></div></section>
+<section><section id="compile-avoidance"><h2>Compile avoidance</h2><div class="paragraph"><p>
+<div id="player-container-e803d04c-f6aa-441e-8ff9-e25d029071aa"></div>
+  <script>
+    asciinema_player.core.CreatePlayer('player-container-e803d04c-f6aa-441e-8ff9-e25d029071aa', 'step5.json', { width: 114, height: 24, fontSize: 'medium' });
+  </script>
+</p></div></section><section id="compile-avoidance-benefits"><h2>Compile avoidance benefits</h2><div class="ulist"><ul><li><p>Doesn&#8217;t recompile dependents if:</p><div class="ulist"><ul><li><p>method body changes</p></li><li><p>parameter names change</p></li><li><p>method order changes</p></li><li><p>private method added/removed</p></li></ul></div></li><li><p>In short: if API stable, do nothing</p></li></ul></div></section></section>
+<section id="declaring-target-platforms"><h2>Declaring target platforms</h2><div class="paragraph"><p>
+<div id="player-container-d0a60631-4156-4ef7-984a-1a69311bd736"></div>
+  <script>
+    asciinema_player.core.CreatePlayer('player-container-d0a60631-4156-4ef7-984a-1a69311bd736', 'step6.json', { width: 114, height: 24, fontSize: 'medium' });
+  </script>
+</p></div></section>
+<section id="why-does-gradle-help"><h2>Why does Gradle help?</h2><div class="ulist"><ul><li><p>Add <code>targetPlatform 'java9'</code></p></li><li><p>Generate module descriptor automatically?</p></li><li><p>Profit!</p></li></ul></div></section>
+<section id="trying-it-out"><h2>Trying it out</h2><div class="paragraph"><p>
+<div id="player-container-0d83a82a-0fa4-42c2-8efc-445b5260cbcd"></div>
+  <script>
+    asciinema_player.core.CreatePlayer('player-container-0d83a82a-0fa4-42c2-8efc-445b5260cbcd', 'step7.json', { width: 114, height: 24, fontSize: 'medium' });
+  </script>
+</p></div></section>
+<section id="what-s-next"><h2>What&#8217;s next?</h2><div class="ulist"><ul><li><p>Automatic toolchain selection</p></li><li><p>Support for <code>modulepath</code></p></li><li><p>Support for <code>jimage</code> and <code>jlink</code></p></li><li><p>Support for modulepath</p></li><li><p>Toolchain provisioning</p></li></ul></div></section>
+<section id="be-involved"><h2>Be involved</h2><div class="ulist"><ul><li><p>Specs can be found on <a href="https://github.com/gradle/gradle/blob/master/design-docs/jdk9-support.md">our GitHub repo</a></p></li></ul></div></section>
+<section id="questions"><h2>Questions</h2><div class="imageblock" style=""><div class="content"><img src="./images/qa.png" alt="qa" /></div></div></section>
+<section id="gradle-inc"><h2>Gradle Inc</h2><div class="paragraph"><p><strong>Motto</strong>: Build Happiness</p></div>
+<div class="paragraph"><p><strong>Mission</strong>: To revolutionize the way</p></div>
+<div class="paragraph"><p>software is built and shipped. We exist to end once-and-for-all the worst things about big software and restore the reason you got into coding in the first place.</p></div>
+<div class="paragraph"><p><strong>We’re Hiring</strong>: Gradle is hiring front-end, back-end, and core software engineers. Visit <a href="https://gradle.org/jobs">gradle.org/jobs</a> to apply.</p></div></section>
+<section id="introducing-gradle-cloud-services"><h2>Introducing Gradle Cloud Services</h2><div class="paragraph"><p>The first service, <strong>Gradle Build Scans</strong>, is now available.</p></div>
+<table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:50%" /><col style="width:50%" /></colgroup><tbody><tr><td class="tableblock halign-left valign-top"><div><div class="ulist"><ul><li><p>Insights into your build</p></li><li><p>View and share via URL</p></li><li><p>Debug, optimize and refine</p></li><li><p>Analyze all of your builds</p></li></ul></div></div></td><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p><span class="image"><img src="./images/build-scans.png" alt="build scans" /></span></p></div></div></td></tr></tbody></table>
+<div class="paragraph"><p>Stop by the Gradle Lounge and create a Build Scan!</p></div></section>
+<section id="thank-you"><h2>Thank you!</h2><div class="ulist"><ul><li><p>Slides and code : <a href="https://github.com/melix/gradlesummit2016-jigsaw-gradle" class="bare">https://github.com/melix/gradlesummit2016-jigsaw-gradle</a></p></li><li><p>Gradle documentation : <a href="http://gradle.org/documentation/" class="bare">http://gradle.org/documentation/</a></p></li><li><p>State of the module system: <a href="http://openjdk.java.net/projects/jigsaw/spec/sotms" class="bare">http://openjdk.java.net/projects/jigsaw/spec/sotms</a></p></li><li><p>Follow me: <a href="http://twitter.com/CedricChampeau">@CedricChampeau</a></p></li></ul></div></section></div></div><script src="reveal.js/lib/js/head.min.js"></script><script src="reveal.js/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+Reveal.initialize({
+  // Display controls in the bottom right corner
+  controls: true,
+  // Display a presentation progress bar
+  progress: true,
+  // Display the page number of the current slide
+  slideNumber: true,
+  // Push each slide change to the browser history
+  history: true,
+  // Enable keyboard shortcuts for navigation
+  keyboard: true,
+  // Enable the slide overview mode
+  overview: true,
+  // Vertical centering of slides
+  center: true,
+  // Enables touch navigation on devices with touch input
+  touch: true,
+  // Loop the presentation
+  loop: false,
+  // Change the presentation direction to be RTL
+  rtl: false,
+  // Turns fragments on and off globally
+  fragments: true,
+  // Flags if the presentation is running in an embedded mode,
+  // i.e. contained within a limited portion of the screen
+  embedded: false,
+  // Number of milliseconds between automatically proceeding to the
+  // next slide, disabled when set to 0, this value can be overwritten
+  // by using a data-autoslide attribute on your slides
+  autoSlide: 0,
+  // Stop auto-sliding after user input
+  autoSlideStoppable: true,
+  // Enable slide navigation via mouse wheel
+  mouseWheel: false,
+  // Hides the address bar on mobile devices
+  hideAddressBar: true,
+  // Opens links in an iframe preview overlay
+  previewLinks: false,
+  // Theme (e.g., beige, black, league, night, serif, simple, sky, solarized, white)
+  // NOTE setting the theme in the config no longer works in reveal.js 3.x
+  //theme: Reveal.getQueryHash().theme || 'summit',
+  // Transition style (e.g., none, fade, slide, convex, concave, zoom)
+  transition: Reveal.getQueryHash().transition || 'linear',
+  // Transition speed (e.g., default, fast, slow)
+  transitionSpeed: 'default',
+  // Transition style for full page slide backgrounds (e.g., none, fade, slide, convex, concave, zoom)
+  backgroundTransition: 'fade',
+  // Number of slides away from the current that are visible
+  viewDistance: 3,
+  // Parallax background image (e.g., "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'")
+  parallaxBackgroundImage: '',
+  // Parallax background size in CSS syntax (e.g., "2100px 900px")
+  parallaxBackgroundSize: '',
 
+  // The "normal" size of the presentation, aspect ratio will be preserved
+  // when the presentation is scaled to fit different resolutions. Can be
+  // specified using percentage units.
+  width: 960,
+  height: 700,
+
+  // Factor of the display size that should remain empty around the content
+  margin: 0.1,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 1.5,
+
+  // Optional libraries used to extend on reveal.js
+  dependencies: [
+      { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+      { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+      { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+      { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+  ]
+});</script><div id="footer">
+  <div style="width:100%">
+     <div style="display:inline">Create elegant builds at scale - @CedricChampeau</div>
+     <div style="display:inline"><img src="images/gradle-logo-min.png"></div>
+  </div>
+</div></body></html>
