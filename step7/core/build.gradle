@@ -1,0 +1,48 @@
+plugins {
+   id 'jvm-component'
+   id 'java-lang'
+   id 'junit-test-suite'
+}
+
+apply from: '../jdk.gradle'
+
+repositories { jcenter() }
+
+model {
+   components {
+       main(JvmLibrarySpec) {
+           sources {
+	      java {
+                 dependencies {
+                    module 'org.apache.commons:commons-lang3:3.4'
+                 }
+              }
+           }
+           api {
+              exports 'com.acme'
+           }
+           targetPlatform 'java7'
+           targetPlatform 'java8'
+           targetPlatform 'java9'
+binaries {
+        withType(JarBinarySpec) { bin ->
+            if (bin.targetPlatform.targetCompatibility.java9) {
+                def genDir = new File("$buildDir/src/${bin.name}/jigsaw")
+                sources {
+                    jigsaw(JavaSourceSet) {
+                        source.srcDir genDir
+                    }
+                }
+                genDir.mkdirs()
+                def exports = exportedPackages.collect { "    exports $it;" }.join('\n')
+                new File(genDir, 'module-info.java').write("""module com.acme.${bin.name - 'Jar'} {
+${exports}
+}""")
+            }
+
+        }
+    }
+        }
+   }
+
+}

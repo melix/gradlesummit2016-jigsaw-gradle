@@ -1,0 +1,17 @@
+plugins {
+   id 'jvm-component'
+   id 'java-lang'
+   id 'junit-test-suite'
+}
+
+model {
+   components {
+       main(JvmLibrarySpec) {
+           dependencies {
+               project ':core' library 'main'
+           }
+           targetPlatform 'java7'
+           targetPlatform 'java8'
+       }
+   }
+}

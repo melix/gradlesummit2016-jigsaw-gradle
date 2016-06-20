@@ -1,0 +1,15 @@
+plugins {
+   id 'jvm-component'
+   id 'java-lang'
+   id 'junit-test-suite'
+}
+
+model {
+   components {
+       main(JvmLibrarySpec) {
+           dependencies {
+               project ':core'
+           }
+       }
+   }
+}

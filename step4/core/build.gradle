@@ -1,0 +1,24 @@
+plugins {
+   id 'jvm-component'
+   id 'java-lang'
+   id 'junit-test-suite'
+}
+
+repositories { jcenter() }
+
+model {
+   components {
+       main(JvmLibrarySpec) {
+           sources {
+	      java {
+                 dependencies {
+                    module 'org.apache.commons:commons-lang3:3.4'
+                 }
+              }
+           }
+           api {
+              exports 'com.acme'
+           }
+       }
+   }
+}

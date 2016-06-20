@@ -1,0 +1,22 @@
+def jdkBaseDir = '/opt/jdk'
+
+gradle.taskGraph.whenReady { taskGraph ->
+    allprojects {
+        tasks.withType(JavaCompile) {
+            def jdk
+            switch (it.name) {
+                case ~/compileMainJava6.+/: jdk = '1.6.0'; break
+                case ~/compileMainJava7.+/: jdk = '1.7.0'; break
+                case ~/compileMainJava9.+/: jdk = '1.9.0-jigsaw'; break
+                default: jdk = '1.8.0'
+            }
+            def javacPath = new File("$jdkBaseDir$jdk/bin/javac")
+            if (javacPath.exists()) {
+                options.fork = true
+                options.forkOptions.executable = javacPath.absolutePath
+            } else {
+                println "Cannot find JDK $jdk at $jdkBaseDir$jdk. $it.name will use the default"
+            }
+        }
+    }
+}

@@ -1,0 +1,6 @@
+task run(type:JavaExec) {
+   description = 'Runs the sample application'
+   classpath = files("cli/build/jars/main/jar/main.jar", 'core/build/jars/main/jar/main.jar')
+   main = 'com.acme.cli.GreeterCli'
+   standardInput System.in
+}

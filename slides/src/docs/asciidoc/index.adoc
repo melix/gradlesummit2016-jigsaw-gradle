@@ -1,0 +1,188 @@
+[data-background="images/summit-intro.png"]
+= Juggling multiple Java platforms and Jigsaw with Gradle
+Cédric Champeau (@CedricChampeau), Gradle Inc.
+2016-04-22
+:revnumber: {project-version}
+:example-caption!:
+ifndef::imagesdir[:imagesdir: images]
+ifndef::sourcedir[:sourcedir: ../java]
+:deckjs_transition: fade
+:navigation:
+:menu:
+:status:
+:adoctor: http://asciidoctor.org/[Asciidoctor]
+:gradle: http://gradle.org[Gradle]
+
+== Who am I
+
+++++
+<style>
+.asciinema-terminal.font-medium {
+  font-size: 16px;
+}
+</style>
+++++
+
+[source,groovy]
+----
+speaker {
+    name 'Cédric Champeau'
+    company 'Gradle Inc'
+    oss 'Apache Groovy committer',
+    successes 'Static type checker',
+                    'Static compilation',
+                    'Traits',
+                    'Markup template engine',
+                    'DSLs'
+        failures Stream.of(bugs),
+        twitter '@CedricChampeau',
+        github 'melix',
+        extraDescription '''Groovy in Action 2 co-author
+Misc OSS contribs (Gradle plugins, deck2pdf, jlangdetect, ...)'''
+}
+----
+
+== Project Jigsaw
+
+* Modularity for the Java platform
+** *Reliable configuration* (goodbye _classpath_)
+** *Strong encapsulation* (goodbye _com.sun_)
+* Enforce strict boundaries between modules
+** compile-time
+** run-time
+
+== Jigsaw modules
+
+=== Declaring a module
+
+.module-info.java
+[source,java]
+----
+module com.foo.bar {
+    requires org.baz.qux;
+    exports com.foo.bar.alpha;
+    exports com.foo.bar.beta;
+}
+----
+
+=== A module
+
+* Declares dependencies onto other modules
+** optionally transitive (`public`)
+* Declares a list of packages it exports
+* will be found on _modulepath_
+
+== Why it's going to break your apps
+
+* Exports are package based
+* A non-exported package is not visible to consumers
+* 2 modules cannot export the same packages
+* 2 modules cannot have the same internal packages
+
+Death to *split packages*.
+
+== How Gradle will help?
+
+* Find a _smooth migration path_
+* Prepare today, migrate when ready
+
+== Gradle's software model
+
+* Idea : we're building software, so let's model software
+* Describe _what_ rather than _how_
+* Leverage conventions
+* Work in progress
+
+== A simple project
+
+screencast:step1[]
+
+== Internal APIs
+
+screencast:step2[]
+
+== Internal APIs maintenance nightmare
+
+screencast:step3[]
+
+== Declaring internal APIs
+
+screencast:step4[]
+
+== Compile avoidance
+
+screencast:step5[]
+
+=== Compile avoidance benefits
+
+* Doesn't recompile dependents if:
+** method body changes
+** parameter names change
+** method order changes
+** private method added/removed
+* In short: if API stable, do nothing
+
+== Declaring target platforms
+
+screencast:step6[]
+
+== Why does Gradle help?
+
+* Add `targetPlatform 'java9'`
+* Generate module descriptor automatically?
+* Profit!
+
+== Trying it out
+
+screencast:step7[]
+
+== What's next?
+
+* Automatic toolchain selection
+* Support for `modulepath`
+* Support for `jimage` and `jlink`
+* Support for modulepath
+* Toolchain provisioning
+
+== Be involved
+
+* Specs can be found on https://github.com/gradle/gradle/blob/master/design-docs/jdk9-support.md[our GitHub repo]
+
+== Questions
+
+image::qa.png[]
+
+== Gradle Inc
+
+*Motto*: Build Happiness
+
+*Mission*: To revolutionize the way
+
+software is built and shipped. We exist to end once-and-for-all the worst things about big software and restore the reason you got into coding in the first place.
+
+*We’re Hiring*: Gradle is hiring front-end, back-end, and core software engineers. Visit https://gradle.org/jobs[gradle.org/jobs] to apply.
+
+== Introducing Gradle Cloud Services
+
+The first service, *Gradle Build Scans*, is now available.
+
+[cols="50a,50a"]
+|===
+|
+* Insights into your build
+* View and share via URL
+* Debug, optimize and refine
+* Analyze all of your builds 
+|image:build-scans.png[]
+|===
+
+
+Stop by the Gradle Lounge and create a Build Scan!
+
+== Thank you!
+
+* Slides and code : https://github.com/melix/gradlesummit2016-jigsaw-gradle
+* Gradle documentation : http://gradle.org/documentation/
+* State of the module system: http://openjdk.java.net/projects/jigsaw/spec/sotms
+* Follow me: http://twitter.com/CedricChampeau[@CedricChampeau]
+
