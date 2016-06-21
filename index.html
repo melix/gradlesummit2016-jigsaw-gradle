@@ -28,7 +28,7 @@ Misc OSS contribs (Gradle plugins, deck2pdf, jlangdetect, ...)'''
 <div class="ulist"><ul><li><p>Work in progress</p></li><li><p>Will be backported to current model</p></li></ul></div>
 </div></section>
 <section id="project-jigsaw" data-background="images/puzzle.jpg"><h2>Project Jigsaw</h2><div class="ulist"><ul><li><p>Modularity for the Java platform</p><div class="ulist"><ul><li><p><strong>Reliable configuration</strong> (goodbye <em>classpath</em>)</p></li><li><p><strong>Strong encapsulation</strong> (goodbye <em>com.sun</em>)</p></li></ul></div></li><li><p>Enforce strict boundaries between modules</p><div class="ulist"><ul><li><p>compile-time</p></li><li><p>run-time</p></li></ul></div></li></ul></div></section>
-<section><section id="jigsaw-modules"><h2>Jigsaw modules</h2></section><section id="declaring-a-module"><h2>Declaring a module</h2><div class="listingblock"><div class="title">module-info.java</div><div class="content"><pre class="highlight"><code class="java language-java">module com.foo.bar {
+<section><section id="jigsaw-modules" data-background="images/modules.jpg"><h2>Jigsaw modules</h2></section><section id="declaring-a-module"><h2>Declaring a module</h2><div class="listingblock"><div class="title">module-info.java</div><div class="content"><pre class="highlight"><code class="java language-java">module com.foo.bar {
     requires org.baz.qux;
     exports com.foo.bar.alpha;
     exports com.foo.bar.beta;
@@ -38,46 +38,46 @@ Misc OSS contribs (Gradle plugins, deck2pdf, jlangdetect, ...)'''
 <section id="how-gradle-will-help"><h2>How Gradle will help?</h2><div class="ulist"><ul><li><p>Find a <em>smooth migration path</em></p></li><li><p>Prepare today, migrate when ready</p></li></ul></div></section>
 <section id="gradle-s-software-model"><h2>Gradle&#8217;s software model</h2><div class="ulist"><ul><li><p>Idea : we&#8217;re building software, so let&#8217;s model software</p></li><li><p>Describe <em>what</em> rather than <em>how</em></p></li><li><p>Leverage conventions</p></li><li><p>Work in progress</p></li></ul></div></section>
 <section id="a-simple-project"><h2>A simple project</h2><div class="paragraph"><p>
-<div id="player-container-7585511f-d908-46ea-9f1c-9512bad8f8c6"></div>
+<div id="player-container-cde8f35d-5fa3-4d64-8203-83bd803dcdd3"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-7585511f-d908-46ea-9f1c-9512bad8f8c6', 'step1.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-cde8f35d-5fa3-4d64-8203-83bd803dcdd3', 'step1.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section>
 <section id="internal-apis"><h2>Internal APIs</h2><div class="paragraph"><p>
-<div id="player-container-4ee97123-a3a7-43dc-b28e-c960b4be9845"></div>
+<div id="player-container-d85db8bc-a62d-4211-93bf-0b0e20b51050"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-4ee97123-a3a7-43dc-b28e-c960b4be9845', 'step2.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-d85db8bc-a62d-4211-93bf-0b0e20b51050', 'step2.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section>
 <section id="internal-apis-maintenance-nightmare"><h2>Internal APIs maintenance nightmare</h2><div class="paragraph"><p>
-<div id="player-container-76a016ae-213a-445d-8cf6-8d3a3ea5f983"></div>
+<div id="player-container-f26a8a75-aef8-44be-8425-9c35afed5f01"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-76a016ae-213a-445d-8cf6-8d3a3ea5f983', 'step3.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-f26a8a75-aef8-44be-8425-9c35afed5f01', 'step3.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section>
 <section id="declaring-internal-apis"><h2>Declaring internal APIs</h2><div class="paragraph"><p>
-<div id="player-container-9b760670-6dac-4327-93c8-c904be95ceb6"></div>
+<div id="player-container-4cd73d07-ea9d-4e20-8360-a902a9b1989c"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-9b760670-6dac-4327-93c8-c904be95ceb6', 'step4.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-4cd73d07-ea9d-4e20-8360-a902a9b1989c', 'step4.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section>
 <section><section id="compile-avoidance"><h2>Compile avoidance</h2><div class="paragraph"><p>
-<div id="player-container-4f1c7a1a-0cec-40ec-82ed-12861c24d5f0"></div>
+<div id="player-container-b07114fc-bae4-478d-aed5-60a81442f55d"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-4f1c7a1a-0cec-40ec-82ed-12861c24d5f0', 'step5.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-b07114fc-bae4-478d-aed5-60a81442f55d', 'step5.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section><section id="compile-avoidance-benefits"><h2>Compile avoidance benefits</h2><div class="ulist"><ul><li><p>Doesn&#8217;t recompile dependents if:</p><div class="ulist"><ul><li><p>method body changes</p></li><li><p>parameter names change</p></li><li><p>method order changes</p></li><li><p>private method added/removed</p></li></ul></div></li><li><p>In short: if API stable, do nothing</p></li></ul></div></section></section>
 <section id="declaring-target-platforms"><h2>Declaring target platforms</h2><div class="paragraph"><p>
-<div id="player-container-7af05753-144a-480c-9b73-693fe316a048"></div>
+<div id="player-container-0a74b93a-bd7b-4ebe-ae23-182e6f0e61b6"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-7af05753-144a-480c-9b73-693fe316a048', 'step6.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-0a74b93a-bd7b-4ebe-ae23-182e6f0e61b6', 'step6.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section>
 <section id="why-does-gradle-help"><h2>Why does Gradle help?</h2><div class="ulist"><ul><li><p>Add <code>targetPlatform 'java9'</code></p></li><li><p>Generate module descriptor automatically?</p></li><li><p>Profit!</p></li></ul></div></section>
 <section id="trying-it-out"><h2>Trying it out</h2><div class="paragraph"><p>
-<div id="player-container-af663874-f9ad-4a4d-ba6a-7f44f99b72a9"></div>
+<div id="player-container-8d6fb625-e567-49c2-9138-79adfd9fec33"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-af663874-f9ad-4a4d-ba6a-7f44f99b72a9', 'step7.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-8d6fb625-e567-49c2-9138-79adfd9fec33', 'step7.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section>
 <section id="what-s-next"><h2>What&#8217;s next?</h2><div class="ulist"><ul><li><p>Backport to "old" model</p></li><li><p>Automatic toolchain selection</p></li><li><p>Support for <code>modulepath</code></p></li><li><p>Support for <code>jimage</code> and <code>jlink</code></p></li><li><p>Support for modulepath</p></li><li><p>Toolchain provisioning</p></li></ul></div></section>
@@ -87,7 +87,7 @@ Misc OSS contribs (Gradle plugins, deck2pdf, jlangdetect, ...)'''
 <div class="paragraph"><p><strong>Mission</strong>: To revolutionize the way software is built and shipped. We exist to end once-and-for-all the worst things about big software and restore the reason you got into coding in the first place.</p></div>
 <div class="paragraph"><p><strong>We’re Hiring</strong>: Gradle is hiring front-end, back-end, and core software engineers. Visit <a href="https://gradle.org/jobs">gradle.org/jobs</a> to apply.</p></div></section>
 <section id="introducing-gradle-cloud-services"><h2>Introducing Gradle Cloud Services</h2><div class="paragraph"><p>The first service, <strong>Gradle Build Scans</strong>, is now available.</p></div>
-<table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:50%" /><col style="width:50%" /></colgroup><tbody><tr><td class="tableblock halign-left valign-top"><div><div class="ulist"><ul><li><p>Insights into your build</p></li><li><p>View and share via URL</p></li><li><p>Debug, optimize and refine</p></li><li><p>Analyze all of your builds</p></li></ul></div></div></td><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p><span class="image"><img src="./images/build-scans.png" alt="build scans" /></span></p></div></div></td></tr></tbody></table>
+<table class="tableblock frame-all grid-all" style="width:100%"><colgroup><col style="width:50%" /><col style="width:50%" /></colgroup><tbody><tr><td class="tableblock halign-left valign-top"><div><div class="ulist"><ul><li><p>Insights into your build</p></li><li><p>View and share via URL</p></li><li><p>Debug, optimize and refine</p></li><li><p>Analyze <em>all</em> of your builds</p></li></ul></div></div></td><td class="tableblock halign-left valign-top"><div><div class="paragraph"><p><span class="image"><img src="./images/build-scans.png" alt="build scans" /></span></p></div></div></td></tr></tbody></table>
 <div class="paragraph"><p><a href="https://receipts.gradle.com/r/ylmkl3dxfypia" class="bare">https://receipts.gradle.com/r/ylmkl3dxfypia</a></p></div>
 <div class="paragraph"><p>Stop by the Gradle Lounge and create a Build Scan!</p></div></section>
 <section id="thank-you"><h2>Thank you!</h2><div class="ulist"><ul><li><p>Slides and code : <a href="https://github.com/melix/gradlesummit2016-jigsaw-gradle" class="bare">https://github.com/melix/gradlesummit2016-jigsaw-gradle</a></p></li><li><p>Gradle documentation : <a href="http://gradle.org/documentation/" class="bare">http://gradle.org/documentation/</a></p></li><li><p>State of the module system: <a href="http://openjdk.java.net/projects/jigsaw/spec/sotms" class="bare">http://openjdk.java.net/projects/jigsaw/spec/sotms</a></p></li><li><p>Follow me: <a href="http://twitter.com/CedricChampeau">@CedricChampeau</a></p></li></ul></div>
