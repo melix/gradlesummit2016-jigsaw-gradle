@@ -24,6 +24,9 @@
         extraDescription '''Groovy in Action 2 co-author
 Misc OSS contribs (Gradle plugins, deck2pdf, jlangdetect, ...)'''
 }</code></pre></div></div></section>
+<section id="disclaimer" data-background="images/dangerous-road.jpg"><h2>Disclaimer</h2><div style="color:yellow">
+<div class="ulist"><ul><li><p>Work in progress</p></li><li><p>Will be backported to current model</p></li></ul></div>
+</div></section>
 <section id="project-jigsaw" data-background="images/puzzle.jpg"><h2>Project Jigsaw</h2><div class="ulist"><ul><li><p>Modularity for the Java platform</p><div class="ulist"><ul><li><p><strong>Reliable configuration</strong> (goodbye <em>classpath</em>)</p></li><li><p><strong>Strong encapsulation</strong> (goodbye <em>com.sun</em>)</p></li></ul></div></li><li><p>Enforce strict boundaries between modules</p><div class="ulist"><ul><li><p>compile-time</p></li><li><p>run-time</p></li></ul></div></li></ul></div></section>
 <section><section id="jigsaw-modules"><h2>Jigsaw modules</h2></section><section id="declaring-a-module"><h2>Declaring a module</h2><div class="listingblock"><div class="title">module-info.java</div><div class="content"><pre class="highlight"><code class="java language-java">module com.foo.bar {
     requires org.baz.qux;
@@ -35,46 +38,46 @@ Misc OSS contribs (Gradle plugins, deck2pdf, jlangdetect, ...)'''
 <section id="how-gradle-will-help"><h2>How Gradle will help?</h2><div class="ulist"><ul><li><p>Find a <em>smooth migration path</em></p></li><li><p>Prepare today, migrate when ready</p></li></ul></div></section>
 <section id="gradle-s-software-model"><h2>Gradle&#8217;s software model</h2><div class="ulist"><ul><li><p>Idea : we&#8217;re building software, so let&#8217;s model software</p></li><li><p>Describe <em>what</em> rather than <em>how</em></p></li><li><p>Leverage conventions</p></li><li><p>Work in progress</p></li></ul></div></section>
 <section id="a-simple-project"><h2>A simple project</h2><div class="paragraph"><p>
-<div id="player-container-af45c502-7bb1-4036-af6f-96a59a99e544"></div>
+<div id="player-container-583e2e32-ec9b-4e75-aca0-4b252d006222"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-af45c502-7bb1-4036-af6f-96a59a99e544', 'step1.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-583e2e32-ec9b-4e75-aca0-4b252d006222', 'step1.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section>
 <section id="internal-apis"><h2>Internal APIs</h2><div class="paragraph"><p>
-<div id="player-container-a01b7caa-2fa5-4f3d-b74c-4a076c10276d"></div>
+<div id="player-container-093c3bb1-bc3e-4240-b592-33532c0da782"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-a01b7caa-2fa5-4f3d-b74c-4a076c10276d', 'step2.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-093c3bb1-bc3e-4240-b592-33532c0da782', 'step2.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section>
 <section id="internal-apis-maintenance-nightmare"><h2>Internal APIs maintenance nightmare</h2><div class="paragraph"><p>
-<div id="player-container-a5dd35e6-49ad-4618-8178-0e5be0c24e34"></div>
+<div id="player-container-6cb5c24b-3dff-4854-807d-7624db77ad06"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-a5dd35e6-49ad-4618-8178-0e5be0c24e34', 'step3.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-6cb5c24b-3dff-4854-807d-7624db77ad06', 'step3.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section>
 <section id="declaring-internal-apis"><h2>Declaring internal APIs</h2><div class="paragraph"><p>
-<div id="player-container-72af8f71-dbbe-4565-827b-81149c691980"></div>
+<div id="player-container-70f85d06-4c99-489b-9f71-b29525dd2d97"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-72af8f71-dbbe-4565-827b-81149c691980', 'step4.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-70f85d06-4c99-489b-9f71-b29525dd2d97', 'step4.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section>
 <section><section id="compile-avoidance"><h2>Compile avoidance</h2><div class="paragraph"><p>
-<div id="player-container-aab04f21-268c-4632-aeef-79bac36b4557"></div>
+<div id="player-container-aea4c220-b612-4702-be4a-486da0ffb0b3"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-aab04f21-268c-4632-aeef-79bac36b4557', 'step5.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-aea4c220-b612-4702-be4a-486da0ffb0b3', 'step5.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section><section id="compile-avoidance-benefits"><h2>Compile avoidance benefits</h2><div class="ulist"><ul><li><p>Doesn&#8217;t recompile dependents if:</p><div class="ulist"><ul><li><p>method body changes</p></li><li><p>parameter names change</p></li><li><p>method order changes</p></li><li><p>private method added/removed</p></li></ul></div></li><li><p>In short: if API stable, do nothing</p></li></ul></div></section></section>
 <section id="declaring-target-platforms"><h2>Declaring target platforms</h2><div class="paragraph"><p>
-<div id="player-container-5bc9e065-0459-4b47-8502-7426d3a33135"></div>
+<div id="player-container-daa9fcce-59a3-4eb9-8c41-a7cdc2225576"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-5bc9e065-0459-4b47-8502-7426d3a33135', 'step6.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-daa9fcce-59a3-4eb9-8c41-a7cdc2225576', 'step6.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section>
 <section id="why-does-gradle-help"><h2>Why does Gradle help?</h2><div class="ulist"><ul><li><p>Add <code>targetPlatform 'java9'</code></p></li><li><p>Generate module descriptor automatically?</p></li><li><p>Profit!</p></li></ul></div></section>
 <section id="trying-it-out"><h2>Trying it out</h2><div class="paragraph"><p>
-<div id="player-container-a98b1e57-aab0-478b-b01a-1dfb480a1b82"></div>
+<div id="player-container-7a2648b6-3585-4740-aff4-d20630082cb2"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-a98b1e57-aab0-478b-b01a-1dfb480a1b82', 'step7.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-7a2648b6-3585-4740-aff4-d20630082cb2', 'step7.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section>
 <section id="what-s-next"><h2>What&#8217;s next?</h2><div class="ulist"><ul><li><p>Automatic toolchain selection</p></li><li><p>Support for <code>modulepath</code></p></li><li><p>Support for <code>jimage</code> and <code>jlink</code></p></li><li><p>Support for modulepath</p></li><li><p>Toolchain provisioning</p></li></ul></div></section>
