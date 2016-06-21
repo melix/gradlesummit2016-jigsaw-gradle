@@ -47,6 +47,20 @@ Misc OSS contribs (Gradle plugins, deck2pdf, jlangdetect, ...)'''
 }
 ----
 
+[data-background="images/dangerous-road.jpg"]
+== Disclaimer
+
+++++
+<div style="color:yellow">
+++++
+
+* Work in progress
+* Will be backported to current model
+
+++++
+</div>
+++++
+
 [data-background="images/puzzle.jpg"]
 == Project Jigsaw
 

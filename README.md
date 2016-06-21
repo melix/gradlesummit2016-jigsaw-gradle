@@ -1,5 +1,5 @@
-# Résoudre le puzzle Jigsaw avec Gradle
+# Juggling multiple Java platforms and Jigsaw
 
-Slides et code pour ma présentation à Devoxx France 2016.
+Slides and code for talk given at the Gradle Summit 2016
 
-Version web: http://melix.github.io/devoxxfr2016-jigsaw-gradle
+Version web: http://melix.github.io/gradlesummit2016-jigsaw-gradle
