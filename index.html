@@ -38,46 +38,46 @@ Misc OSS contribs (Gradle plugins, deck2pdf, jlangdetect, ...)'''
 <section id="how-gradle-will-help"><h2>How Gradle will help?</h2><div class="ulist"><ul><li><p>Find a <em>smooth migration path</em></p></li><li><p>Prepare today, migrate when ready</p></li></ul></div></section>
 <section id="gradle-s-software-model"><h2>Gradle&#8217;s software model</h2><div class="ulist"><ul><li><p>Idea : we&#8217;re building software, so let&#8217;s model software</p></li><li><p>Describe <em>what</em> rather than <em>how</em></p></li><li><p>Leverage conventions</p></li><li><p>Work in progress</p></li></ul></div></section>
 <section id="a-simple-project"><h2>A simple project</h2><div class="paragraph"><p>
-<div id="player-container-cde8f35d-5fa3-4d64-8203-83bd803dcdd3"></div>
+<div id="player-container-3ad28533-9128-4fd0-8e55-7d8929ac10c7"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-cde8f35d-5fa3-4d64-8203-83bd803dcdd3', 'step1.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-3ad28533-9128-4fd0-8e55-7d8929ac10c7', 'step1.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section>
 <section id="internal-apis"><h2>Internal APIs</h2><div class="paragraph"><p>
-<div id="player-container-d85db8bc-a62d-4211-93bf-0b0e20b51050"></div>
+<div id="player-container-1b23a4f2-f860-45cc-b1f4-cab0fe35b6fd"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-d85db8bc-a62d-4211-93bf-0b0e20b51050', 'step2.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-1b23a4f2-f860-45cc-b1f4-cab0fe35b6fd', 'step2.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section>
 <section id="internal-apis-maintenance-nightmare"><h2>Internal APIs maintenance nightmare</h2><div class="paragraph"><p>
-<div id="player-container-f26a8a75-aef8-44be-8425-9c35afed5f01"></div>
+<div id="player-container-6d2f12c9-b0a2-40cd-8ed9-b7311c08e77c"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-f26a8a75-aef8-44be-8425-9c35afed5f01', 'step3.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-6d2f12c9-b0a2-40cd-8ed9-b7311c08e77c', 'step3.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section>
 <section id="declaring-internal-apis"><h2>Declaring internal APIs</h2><div class="paragraph"><p>
-<div id="player-container-4cd73d07-ea9d-4e20-8360-a902a9b1989c"></div>
+<div id="player-container-9a76ad0c-2b3a-494b-aef0-cc1c7ea373c2"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-4cd73d07-ea9d-4e20-8360-a902a9b1989c', 'step4.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-9a76ad0c-2b3a-494b-aef0-cc1c7ea373c2', 'step4.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section>
 <section><section id="compile-avoidance"><h2>Compile avoidance</h2><div class="paragraph"><p>
-<div id="player-container-b07114fc-bae4-478d-aed5-60a81442f55d"></div>
+<div id="player-container-b624dec9-87ea-48d5-8dde-62f017285bda"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-b07114fc-bae4-478d-aed5-60a81442f55d', 'step5.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-b624dec9-87ea-48d5-8dde-62f017285bda', 'step5.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section><section id="compile-avoidance-benefits"><h2>Compile avoidance benefits</h2><div class="ulist"><ul><li><p>Doesn&#8217;t recompile dependents if:</p><div class="ulist"><ul><li><p>method body changes</p></li><li><p>parameter names change</p></li><li><p>method order changes</p></li><li><p>private method added/removed</p></li></ul></div></li><li><p>In short: if API stable, do nothing</p></li></ul></div></section></section>
 <section id="declaring-target-platforms"><h2>Declaring target platforms</h2><div class="paragraph"><p>
-<div id="player-container-0a74b93a-bd7b-4ebe-ae23-182e6f0e61b6"></div>
+<div id="player-container-87c78454-02ac-4863-a68f-c32e19487a53"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-0a74b93a-bd7b-4ebe-ae23-182e6f0e61b6', 'step6.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-87c78454-02ac-4863-a68f-c32e19487a53', 'step6.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section>
 <section id="why-does-gradle-help"><h2>Why does Gradle help?</h2><div class="ulist"><ul><li><p>Add <code>targetPlatform 'java9'</code></p></li><li><p>Generate module descriptor automatically?</p></li><li><p>Profit!</p></li></ul></div></section>
 <section id="trying-it-out"><h2>Trying it out</h2><div class="paragraph"><p>
-<div id="player-container-8d6fb625-e567-49c2-9138-79adfd9fec33"></div>
+<div id="player-container-264dfe0b-1b0b-415b-be02-8a32abf1b3cf"></div>
   <script>
-    asciinema_player.core.CreatePlayer('player-container-8d6fb625-e567-49c2-9138-79adfd9fec33', 'step7.json', { width: 114, height: 24, fontSize: 'medium' });
+    asciinema_player.core.CreatePlayer('player-container-264dfe0b-1b0b-415b-be02-8a32abf1b3cf', 'step7.json', { width: 114, height: 24, fontSize: 'medium' });
   </script>
 </p></div></section>
 <section id="what-s-next"><h2>What&#8217;s next?</h2><div class="ulist"><ul><li><p>Backport to "old" model</p></li><li><p>Automatic toolchain selection</p></li><li><p>Support for <code>modulepath</code></p></li><li><p>Support for <code>jimage</code> and <code>jlink</code></p></li><li><p>Support for modulepath</p></li><li><p>Toolchain provisioning</p></li></ul></div></section>
